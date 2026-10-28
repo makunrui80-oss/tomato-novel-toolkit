@@ -9,3 +9,5 @@ data/*
 !bin/.gitkeep
 !data/.gitkeep
 .DS_Store
+
+TomatoNovelDownloader-*
