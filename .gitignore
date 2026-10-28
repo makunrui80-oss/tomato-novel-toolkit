@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.build-venv/
+build/
+dist/
+*.spec
+bin/*
+data/*
+!bin/.gitkeep
+!data/.gitkeep
+.DS_Store

@@ -1,0 +1,2 @@
+# The EPUB converter and launcher use Python's standard library only.
+# PyInstaller is installed only by the optional packaging scripts.

@@ -1,0 +1,36 @@
+name: Build desktop packages
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            command: build_windows.bat
+            artifact: TomatoNovelToolkit-windows
+            path: dist/TomatoNovelToolkit.exe
+          - os: macos-latest
+            command: sh build_unix.sh
+            artifact: TomatoNovelToolkit-macos
+            path: dist/TomatoNovelToolkit
+          - os: ubuntu-latest
+            command: sh build_unix.sh
+            artifact: TomatoNovelToolkit-linux
+            path: dist/TomatoNovelToolkit
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build
+        run: ${{ matrix.command }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: ${{ matrix.path }}
