@@ -12,7 +12,7 @@ jobs:
       matrix:
         include:
           - os: windows-latest
-            command: build_windows.bat
+            command: cmd /c build_windows.bat
             artifact: TomatoNovelToolkit-windows
             path: dist/TomatoNovelToolkit.exe
           - os: macos-latest
