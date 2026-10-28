@@ -14,15 +14,27 @@ jobs:
           - os: windows-latest
             command: cmd /c build_windows.bat
             artifact: TomatoNovelToolkit-windows
-            path: dist/TomatoNovelToolkit.exe
+            path: |
+              dist/TomatoNovelToolkit.exe
+              启动桌面版.bat
           - os: macos-latest
             command: sh build_unix.sh
-            artifact: TomatoNovelToolkit-macos
-            path: dist/TomatoNovelToolkit
+            artifact: TomatoNovelToolkit-macos-arm64
+            path: |
+              dist/TomatoNovelToolkit
+              启动桌面版.command
+          - os: macos-13
+            command: sh build_unix.sh
+            artifact: TomatoNovelToolkit-macos-intel
+            path: |
+              dist/TomatoNovelToolkit
+              启动桌面版.command
           - os: ubuntu-latest
             command: sh build_unix.sh
             artifact: TomatoNovelToolkit-linux
-            path: dist/TomatoNovelToolkit
+            path: |
+              dist/TomatoNovelToolkit
+              启动桌面版.sh
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
